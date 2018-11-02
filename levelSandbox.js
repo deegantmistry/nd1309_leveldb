@@ -50,8 +50,17 @@ class LevelSandbox {
      */
     getBlocksCount() {
         let self = this;
-        // Add your code here
-        
+        let keyCount = 0;
+        return new Promise(function(resolve, reject) {
+            self.db.createKeyStream().on('data', function(data) {
+                keyCount++;
+            }).on('error', function(err) {
+                console.log("unable to read data stream");
+                reject(err);
+            }).on('close', function() {
+                resolve(keyCount);
+            });
+        });
       }
 }
 

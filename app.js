@@ -17,7 +17,7 @@ const db = new LevelSandboxClass.LevelSandbox();
             }
         }).catch((err) => { console.log(err); });
       	i++;
-		if (i < 10) { 
+		    if (i < 10) { 
           theLoop(i) 
         } else {
         	db.getBlocksCount().then((count) => {
